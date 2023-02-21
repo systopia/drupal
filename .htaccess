@@ -148,6 +148,15 @@ AddEncoding gzip svgz
   # Copy and adapt this rule to directly execute PHP files in contributed or
   # custom modules or to run another PHP application in the same directory.
   RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics\.php$
+  # Allow access to the endpoints of CiviCRM's CKEditor plugin KCFinder.
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/upload.php$
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/index.php$
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/browse.php$
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/js_localize.php$
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/css/index.php$
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/themes/default/css.php$
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/js/index.php$
+  RewriteCond %{REQUEST_URI} !/libraries/civicrm/packages/kcfinder/themes/default/js.php$
   # Deny access to any other PHP files that do not match the rules above.
   # Specifically, disallow autoload.php from being served directly.
   RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
